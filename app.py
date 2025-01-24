@@ -24,6 +24,12 @@ rating = st.slider("Select the rating:", 1, 5, 3)
 if st.button("Predict Sentiment"):
     if review:
         sentiment = predict_sentiment(review, hour, rating)
+        if sentiment == 0:
+            st.write(f"Predicted Sentiment: **Neutral**")
+        elif sentiment == 1:
+            st.write(f"Predicted Sentiment: **Positive**")
+        else:
+            st.write(f"Predicted Sentiment: **Negative**") 
         st.write(f"Predicted Sentiment: **{sentiment}**")
     else:
         st.warning("Please enter a review.")
