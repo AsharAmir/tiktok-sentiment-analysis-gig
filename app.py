@@ -1,4 +1,3 @@
-
 import streamlit as st
 import joblib
 import numpy as np
@@ -24,6 +23,12 @@ rating = st.slider("Select the rating:", 1, 5, 3)
 if st.button("Predict Sentiment"):
     if review:
         sentiment = predict_sentiment(review, hour, rating)
-        st.write(f"Predicted Sentiment: **{sentiment}**")
+        if sentiment == 0:
+            st.write(f"Predicted Sentiment: **Neutral**")
+        elif sentiment == 1:
+            st.write(f"Predicted Sentiment: **Positive**")
+        else:
+            st.write(f"Predicted Sentiment: **Negative**") 
     else:
         st.warning("Please enter a review.")
+
